@@ -1,0 +1,84 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2870
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww28600\viewh17280\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs42 \cf0 IDENTIFICATION DIVISION.\
+PROGRAM-ID. CALCPGM1.\
+AUTHOR. KARTIK.\
+DATE-WRITTEN. TODAY.\
+\
+ENVIRONMENT DIVISION.\
+INPUT-OUTPUT SECTION.\
+FILE-CONTROL.\
+\
+DATA DIVISION.\
+FILE SECTION.\
+WORKING-STORAGE SECTION.\
+       01 NUM1   PIC   9(02) VALUE  ZERO.\
+       01 NUM2   PIC   9(02) VALUE  ZERO.\
+       01 TOTAL-SUM  PIC   9(02) VALUE  ZERO.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0        01 TOTAL-SUBTRACTION  PIC   S9(02) VALUE  ZERO.\
+       01 TOTAL-MULTIPLICATION  PIC   9(02) VALUE  ZERO.\
+       01 TOTAL-DIV  PIC   9(02)V9(02) VALUE  ZERO.    \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0        01 WS-ABENDPGM  PIC X(08) VALUE \'91ABENDPGM\'92.\
+\
+PROCEDURE DIVISION.\
+   000-MAIN-PARA.\
+        ACCEPT NUM1.\
+        ACCEPT NUM2.\
+       \
+\
+             COMPUTE TOTAL-SUM = NUM1 + NUM2\
+                     ON SIZE ERROR\
+                            DISPLAY \'91ERROR IN SUM\'92.\
+                            CALL WS-ABENDPGM.\
+             END COMPUTE.\
+\
+             COMPUTE TOTAL-SUBTRACTION = NUM1 - NUM2\
+                     ON SIZE ERROR\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0                             DISPLAY \'91ERROR IN SUBTRACTION\'92.\
+                            CALL WS-ABENDPGM.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0               END COMPUTE.\
+\
+             COMPUTE TOTAL-MULTIPLICATION = NUM1 * NUM2\
+                     ON SIZE ERROR\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0                             DISPLAY \'91ERROR IN MULTIPLICATION\'92.\
+                            CALL WS-ABENDPGM.\
+\
+               END COMPUTE.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0        IF NUM2 = ZERO\
+           DISPLAY \'91NUM2 IS ZERO\'92\
+       ELSE\
+             COMPUTE TOTAL-DIV = NUM1 / NUM2\
+                    ON SIZE ERROR\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0                             DISPLAY \'91ERROR IN DIVISION\'92.\
+                            CALL WS-ABENDPGM.\
+        END-IF.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0         END COMPUTE.\
+        \
+     \
+\
+\
+    DISPLAY \'91SUM IS\'92 TOTAL-SUM\
+    DISPLAY \'91SUBTRACTION IS\'92 TOTAL-SUBTRACTION.\
+    DISPLAY \'91MULTIPLICATION IS\'92 TOTAL-MULTIPLICATION.\
+    DISPLAY \'91DIVISION IS\'92 TOTAL-DIV.\
+\
+\
+\
+\
+\
+}
